@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  direction: rtl;
+}
+
+body {
+  font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+/* Fix for line-clamp utility */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Fix for Arabic numerals */
+.font-feature-arabic-numerals {
+  font-feature-settings: "tnum" 1;
+}
+
+/* Print styles */
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+  
+  body {
+    visibility: hidden;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  .print-content {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  
+  .print-content * {
+    visibility: visible;
+  }
+  
+  .print-hide {
+    display: none !important;
+  }
+}
+
+/* Fix for hydration issues */
+.hydration-safe {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Ensure proper RTL layout */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* Fix for form inputs in RTL */
+input[type="tel"] {
+  direction: ltr;
+  text-align: right;
+}
+
+/* Fix for number display */
+.number-display {
+  direction: ltr;
+  display: inline-block;
+}
